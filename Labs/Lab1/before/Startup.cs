@@ -76,14 +76,7 @@ namespace TheStore
 
       app.UseStaticFiles();
 
-      if (env.IsDevelopment())
-      {
-        app.UseStaticFiles(new StaticFileOptions()
-        {
-          RequestPath = "/lib",
-          FileProvider = new PhysicalFileProvider(Path.Combine(env.ContentRootPath, "node_modules/"))
-        });
-      }
+      app.UseNodeModules(env);
 
       app.UseAuthentication();
 
