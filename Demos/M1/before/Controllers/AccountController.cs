@@ -15,7 +15,6 @@ using TheStore.Models;
 
 namespace TheStore.Controllers
 {
-  [Route("api/[controller]")]
   public class AccountController : Controller
   {
     private readonly ILogger<AccountController> _logger;
@@ -34,7 +33,46 @@ namespace TheStore.Controllers
       _config = config;
     }
 
-    [HttpPost("createToken")]
+    [HttpGet("login")]
+    public IActionResult Login()
+    {
+      if (User.Identity.IsAuthenticated) return RedirectToAction("Index", "Root");
+
+      return View();
+    }
+
+    [HttpPost("login")]
+    public async Task<IActionResult> Login(CredentialModel model)
+    {
+      if (ModelState.IsValid)
+      {
+        var user = await _userManager.FindByNameAsync(model.Username);
+
+        if (user != null)
+        {
+          var result = await _signInManager.PasswordSignInAsync(user, model.Password, false, false);
+
+          if (result.Succeeded)
+          {
+            return RedirectToAction("Index", "Root");
+          }
+        }
+      }
+
+      return View();
+    }
+
+    [HttpGet("logout")]
+    public async Task<IActionResult> Logout()
+    {
+      if (User.Identity.IsAuthenticated)
+      {
+        await _signInManager.SignOutAsync();
+      }
+      return RedirectToAction("Index", "Root");
+    }
+
+    [HttpPost("api/account/createToken")]
     public async Task<IActionResult> CreateToken([FromBody] CredentialModel model)
     {
       if (ModelState.IsValid)

@@ -35,11 +35,8 @@ namespace TheStore
       })
         .AddEntityFrameworkStores<StoreContext>();
 
-      services.AddAuthentication(cfg =>
-      {
-        cfg.DefaultAuthenticateScheme = JwtBearerDefaults.AuthenticationScheme;
-        cfg.DefaultChallengeScheme = JwtBearerDefaults.AuthenticationScheme;
-      })
+      services.AddAuthentication()
+        .AddCookie()
         .AddJwtBearer(cfg =>
         {
           cfg.TokenValidationParameters = new TokenValidationParameters()

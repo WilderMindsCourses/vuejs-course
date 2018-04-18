@@ -11,7 +11,6 @@ using TheStore.Data.Entities;
 
 namespace TheStore.Controllers.Api
 {
-  [Authorize]
   [Route("api/[controller]")]
   public class CustomerController : Controller
   {
@@ -35,13 +34,6 @@ namespace TheStore.Controllers.Api
     {
       if (ModelState.IsValid)
       {
-        if (_repository.GetCustomer(User.Identity.Name) != null)
-        {
-          return BadRequest("Customer Exists. Try updating customer instead.");
-        }
-
-        model.Username = User.Identity.Name;
-
         _repository.Add(model);
         if (await _repository.SaveAsync())
         {
