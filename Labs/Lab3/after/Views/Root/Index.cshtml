@@ -1,0 +1,16 @@
+﻿@section scripts {
+  <script src="~/node_modules/vue/dist/vue.js"></script>
+  <script src="~/node_modules/axios/dist/axios.js"></script>
+  <script src="~/js/index.js"></script>
+}
+<div id="index-view">
+  <h2>{{ appName }}</h2>
+  <div>Purchased: {{ buyCount }}</div>
+  <div v-for="p in products">
+    <div>{{ p.name }}</div>
+    <div>{{ p.description }}</div>
+    <div>{{ p.listPrice }}</div>
+    <button class="btn btn-info" v-on:click="onBuy(p)">Buy</button>
+    <hr />
+  </div>
+</div>
