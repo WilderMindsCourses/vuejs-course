@@ -1,0 +1,38 @@
+﻿@section scripts {
+  <script src="/lib/vue/dist/vue.min.js"></script>
+  <script src="/lib/axios/dist/axios.min.js"></script>
+  <script src="/lib/lodash/lodash.min.js"></script>
+  <script src="~/js/filters.js"></script>
+  <script src="~/js/indexPage.js"></script>
+}
+<div id="index-page">
+  <h2>{{ appName }}</h2>
+  <div>Today: {{ today | date }}</div>
+
+  <div v-if="isBusy" class="alert alert-info"><i class="fas fa-spinner fa-spin"></i> Loading...</div>
+  <div v-if="error" class="alert alert-danger">{{ error }}</div>
+
+  <div class="btn-group">
+    <button class="btn btn-info" v-on:click="onSort('listPrice')">Sort by Price</button>
+    <button class="btn btn-info" v-on:click="onSort('name')">Sort by Name</button>
+    <a asp-controller="Root" asp-action="Checkout" class="btn btn-info">Checkout</a>
+  </div>
+
+  <div class="row">
+    <div v-for="p in products" class="col-md-4">
+      <div class="card">
+        <div class="card-body">
+          <img v-if="p.imageUrl.indexOf('noimage') === -1" :src="p.imageUrl" class="float-right img-thumbnail" />
+          <h3 class="card-title">{{ p.brand }}</h3>
+          <p class="text-muted">{{ p.category }}</p>
+          <p>{{ p.name }}</p>
+          <p>Price: {{ p.listPrice | money(2) }}</p>
+        </div>
+        <div class="card-footer">
+          <button class="btn btn-success" v-on:click="onBuy(p)">Buy</button>
+          <button class="btn btn-info">About</button>
+        </div>
+      </div>
+    </div>
+  </div>
+</div>

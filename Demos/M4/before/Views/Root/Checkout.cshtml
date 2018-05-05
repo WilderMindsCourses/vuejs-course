@@ -1,0 +1,59 @@
+﻿@section Scripts {
+  <script src="/lib/vue/dist/vue.min.js"></script>
+  <script src="/lib/axios/dist/axios.min.js"></script>
+  <script src="/lib/lodash/lodash.min.js"></script>
+  <script src="/lib/vee-validate/dist/vee-validate.js"></script>
+  <script src="~/js/filters.js"></script>
+  <script src="~/js/checkout.js"></script>
+}
+<div class="row" id="checkout">
+  <div class="col-md-6 offset-md-3">
+    <div class="alert alert-danger" v-if="error">{{ error }}</div>
+    <form name="theForm" class="m-1" v-on:submit.prevent="onSave()">
+      <h3>Checkout</h3>
+      <div class="form-group">
+        <label for="" class="control-label">Your Name</label>
+        <input type="text" class="form-control" v-model="customer.name" :class="{ 'border-danger': errors.has('customerName') }" placeholder="e.g. Shawn Wildermuth" name="customerName" v-validate="{ 'required': true, 'min': 5 }" >
+        <span class="text-danger" v-if="errors.has('customerName')">{{ errors.first('customerName') }}</span>
+      </div>
+      <div class="form-group">
+        <label for="" class="control-label">Phone Number</label>
+        <input type="text" class="form-control" v-model="customer.phone" :class="{ 'border-danger': errors.has('phone') }" placeholder="404-555-1212" name="phone" v-validate="'required'">
+        <span class="text-danger" v-if="errors.has('phone')">{{ errors.first('phone') }}</span>
+      </div>
+      <div class="well well-sm">
+        <div class="form-group">
+          <label for="" class="control-label">Address Line 1</label>
+          <input type="text" class="form-control" v-model="customer.address.addressLine1" :class="{ 'border-danger': errors.has('address1') }" placeholder="123 Main Street" name="address1" v-validate="'required'">
+          <span class="text-danger" v-if="errors.has('address1')">{{ errors.first('address1') }}</span>
+        </div>
+        <div class="form-group">
+          <label for="" class="control-label">Address Line 2</label>
+          <input type="text" class="form-control" v-model="customer.address.addressLine2" placeholder="">
+        </div>
+        <div class="form-group">
+          <label for="" class="control-label">Address Line 3</label>
+          <input type="text" class="form-control" v-model="customer.address.addressLine3" placeholder="">
+        </div>
+        <div class="form-group">
+          <label for="" class="control-label">City</label>
+          <input type="text" class="form-control" v-model="customer.address.cityTown" :class="{ 'border-danger': errors.has('cityTown') }" placeholder="e.g. Atlanta" name="cityTown" v-validate="'required'" />
+          <span class="text-danger" v-if="errors.has('cityTown')">{{ errors.first('cityTown') }}</span>
+        </div>
+        <div class="form-group">
+          <label for="" class="control-label">State</label>
+          <input class="form-control" v-model="customer.address.stateProvince" :class="{ 'border-danger': errors.has('stateProvince') }" placeholder="e.g. GA" name="stateProvince" v-validate="'required'" />
+          <span class="text-danger" v-if="errors.has('stateProvince')">{{ errors.first('stateProvince') }}</span>
+        </div>
+        <div class="form-group">
+          <label for="" class="control-label">Zipcode</label>
+          <input type="text" class="form-control" v-model="customer.address.postalCode" :class="{ 'border-danger': errors.has('postalCode') }" placeholder="e.g. 30307" name="postalCode" v-validate="'required'">
+          <span class="text-danger" v-if="errors.has('postalCode')">{{ errors.first('postalCode') }}</span>
+        </div>
+      </div>
+      <div class="form-group">
+        <button type="submit" :disabled="errors.any()" class="btn btn-success"><i class="fa fa-arrow-right"></i> Next</button>
+      </div>
+    </form>
+  </div>
+</div>
