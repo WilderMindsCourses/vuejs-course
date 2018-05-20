@@ -1,0 +1,17 @@
+﻿<div class="card p-2">
+  <h3>Shopping Cart</h3>
+  <slot></slot>
+  <table class="table">
+    <tr v-for="line in items">
+      <td>{{ line.name }}</td>
+      <td>{{ line.price | money }}</td>
+      <td>{{ line.quantity }}</td>
+      <td>
+        <button class="btn btn-sm" v-on:click="onDeleteItem(line)">
+          <i class="fas fa-times"></i>
+        </button>
+      </td>
+    </tr>
+  </table>
+  <slot name="footer">Subtotal: {{ subtotal | money }}</slot>
+</div>
