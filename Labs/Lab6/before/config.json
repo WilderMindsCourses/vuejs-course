@@ -1,0 +1,18 @@
+{
+  "Logging": {
+    "IncludeScopes": false,
+    "LogLevel": {
+      "Default": "Information"
+    }
+  },
+  "ConnectionStrings": {
+    "TheStoreDb": "Server=(localdb)\\MSSQLLocalDB;Database=TheStoreDb;Trusted_Connection=True;MultipleActiveResultsets=true;ConnectRetryCount=5;ConnectRetryInterval=10;Connect Timeout=5;"
+  },
+  "Security": {
+    "Tokens": {
+      "Key": "as;ldkfj;aowi;jfalskdjf;laisj;f",
+      "Issuer": "localhost",
+      "Audience": "localhost"
+    }
+  }
+}
