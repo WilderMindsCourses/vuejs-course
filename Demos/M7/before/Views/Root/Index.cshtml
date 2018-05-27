@@ -1,0 +1,28 @@
+﻿@section scripts {
+  <!-- Frameworks -->
+  <script src="/lib/vue/dist/vue.js"></script>
+  <script src="/lib/axios/dist/axios.min.js"></script>
+  <script src="/lib/lodash/lodash.min.js"></script>
+  <script src="/lib/vuex/dist/vuex.js"></script>
+  <script src="/lib/vue-router/dist/vue-router.js"></script>
+  <script src="/lib/vee-validate/dist/vee-validate.js"></script>
+
+  <!-- Our Code -->
+  <script src="~/js/filters.js"></script>
+  <script src="~/js/cart.js"></script>
+  <script src="~/js/waitCursor.js"></script>
+  <script src="~/js/dataStore.js"></script>
+  <script src="~/js/productList.js"></script>
+  <script src="~/js/checkout.js"></script>
+  <script src="~/js/customer.js"></script>
+  <script src="~/js/shipping.js"></script>
+  <script src="~/js/confirmation.js"></script>
+  <script src="~/js/productInfo.js"></script>
+  <script src="~/js/app.js"></script>
+}
+<div id="index-page">
+
+  <transition name="fade">
+    <router-view></router-view>
+  </transition>
+</div>

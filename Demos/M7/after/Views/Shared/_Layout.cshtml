@@ -1,0 +1,102 @@
+﻿<!DOCTYPE html>
+<html>
+<head>
+  <meta charset="utf-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>@ViewData["Title"] - TheStore</title>
+
+  <link href="~/lib/@@fortawesome/fontawesome-free-webfonts/css/fontawesome.css" rel="stylesheet" />
+  <link href="~/lib/@@fortawesome/fontawesome-free-webfonts/css/fa-solid.css" rel="stylesheet" />
+  <link href="~/lib/@@fortawesome/fontawesome-free-webfonts/css/fa-regular.css" rel="stylesheet" />
+
+  @RenderSection("head", required: false)
+
+  <environment include="Development">
+    <link rel="stylesheet" href="~/lib/bootstrap/dist/css/bootstrap.css" />
+    <link rel="stylesheet" href="~/lib/bootswatch/dist/yeti/bootstrap.css" />
+    <link rel="stylesheet" href="~/css/site.css" />
+  </environment>
+  <environment exclude="Development">
+    <link href="https://maxcdn.bootstrapcdn.com/bootstrap/4.0.0/css/bootstrap.min.css" rel="stylesheet"
+          asp-fallback-href="~/lib/bootstrap/dist/css/bootstrap.min.css"
+          asp-fallback-test-class="sr-only" asp-fallback-test-property="position" asp-fallback-test-value="absolute"
+          integrity="sha384-Gn5384xqQ1aoWXA+058RXPxPg6fy4IWvTNh0E263XmFcJlSAwiGgFAW/dAiS6JXm"
+          crossorigin="anonymous">
+    <link rel="stylesheet" href="~/lib/bootswatch/dist/yeti/bootstrap.min.css" />
+    <link rel="stylesheet" href="~/css/site.min.css" asp-append-version="true" />
+  </environment>
+
+</head>
+<body>
+
+
+  <header class="navbar navbar-expand-md navbar-dark bg-success">
+    <h4>
+      <a class="navbar-brand" asp-controller="Root" asp-action="Index">
+        <i class="far fa-credit-card"></i> The Store
+      </a>
+    </h4>
+    <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#theMenu" aria-controls="theMenu" aria-expanded="false" aria-label="Toggle navigation">
+      <span class="navbar-toggler-icon"></span>
+    </button>
+
+    <div class="collapse navbar-collapse justify-content-end" id="theMenu">
+      <ul class="navbar-nav">
+        <li class="nav-item">
+          <a class="nav-link" asp-controller="Root" asp-action="Index">Home</a>
+        </li>
+        <li class="nav-item">
+          <a class="nav-link" asp-controller="Root" asp-action="About">About</a>
+        </li>
+        <li class="nav-item">
+          <a class="nav-link" asp-controller="Root" asp-action="Contact">Contact</a>
+        </li>
+        @if (User.Identity.IsAuthenticated)
+        {
+          <li class="nav-item">
+            <a class="nav-link" asp-controller="Account" asp-action="Logout">Logout</a>
+          </li>
+        }
+        else
+        {
+          <li class="nav-item">
+            <a class="nav-link" asp-controller="Account" asp-action="Login">Login</a>
+          </li>
+        }
+      </ul>
+    </div>
+  </header>
+
+  <section class="container body-content">
+    @RenderBody()
+  </section>
+
+  <footer class="container">
+    <hr />
+    <p class="text-center">&copy; 2018 - TheStore</p>
+  </footer>
+
+
+  <environment include="Development">
+    <script src="~/lib/jquery/dist/jquery.slim.js"></script>
+    <script src="~/lib/bootstrap/dist/js/bootstrap.bundle.js"></script>
+    <script src="~/js/site.js"></script>
+  </environment>
+  <environment exclude="Development">
+    <script src="https://code.jquery.com/jquery-3.3.1.slim.min.js"
+            asp-fallback-src="~/lib/jquery/dist/jquery.min.js"
+            asp-fallback-test="window.jQuery"
+            integrity="sha256-3edrmyuQ0w65f8gfBsqowzjJe2iM6n0nKciPUp8y+7E="
+            crossorigin="anonymous"></script>
+
+    <script src="https://maxcdn.bootstrapcdn.com/bootstrap/4.0.0/js/bootstrap.bundle.min.js"
+            asp-fallback-src="~/lib/bootstrap/dist/js/bootstrap.bundle.min.js"
+            asp-fallback-test="window.jQuery && window.jQuery.fn && window.jQuery.fn.modal"
+            integrity="sha384-feJI7QwhOS+hwpX2zkaeJQjeiwlhOP+SdQDqhgvvo1DsjtiSQByFdThsxO669S2D"
+            crossorigin="anonymous"></script>
+    <script src="~/js/site.min.js" asp-append-version="true"></script>
+  </environment>
+
+  @RenderSection("scripts", required: false)
+</body>
+</html>
