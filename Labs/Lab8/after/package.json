@@ -1,0 +1,24 @@
+{
+  "version": "1.0.0",
+  "name": "asp.net",
+  "private": true,
+  "dependencies": {
+    "jquery": "~3.3.1",
+    "popper.js": "1.14.1",
+    "bootstrap": "4.0.0",
+    "bootswatch": "4.0.0",
+    "@fortawesome/fontawesome-free-webfonts": "1.0.5",
+    "vue": "2.5.16",
+    "axios": "0.18.0",
+    "vee-validate": "2.0.8",
+    "vuex": "3.0.1",
+    "vue-router": "3.0.1"
+  },
+  "devDependencies": {
+    "webpack": "^4.9.1",
+    "webpack-cli": "^2.1.4",
+    "babel-loader": "7.1.4",
+    "babel-core": "6.26.3",
+    "babel-preset-env": "1.6.1"
+  }
+}
