@@ -1,0 +1,26 @@
+{
+  "version": "1.0.0",
+  "name": "asp.net",
+  "private": true,
+  "scripts": {
+    "serve": "vue-cli-service serve",
+    "build": "vue-cli-service build",
+    "watch": "vue-cli-service build --mode development --watch"
+  },
+  "dependencies": {
+    "vue": "^2.5.17"
+  },
+  "devDependencies": {
+    "@fortawesome/fontawesome-free-webfonts": "1.0.5",
+    "@vue/cli-plugin-babel": "^3.2.0",
+    "@vue/cli-service": "^3.2.0",
+    "bootstrap": "4.0.0",
+    "bootswatch": "4.0.0",
+    "jquery": "~3.3.1",
+    "less": "^3.0.4",
+    "less-loader": "^4.1.0",
+    "popper.js": "1.14.1",
+    "vue-cli-plugin-source-dir": "^0.1.0",
+    "vue-template-compiler": "^2.5.17"
+  }
+}
